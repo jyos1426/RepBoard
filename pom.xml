@@ -3,14 +3,21 @@
   <groupId>web17</groupId>
   <artifactId>web17</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-    <dependencies>
+
+  <dependencies>
+  <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>4.0.4.RELEASE</version>
+	</dependency>
 	  <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-webmvc</artifactId>
 	    <version>4.0.4.RELEASE</version>
 	</dependency>  
-	  <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		  <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 	<dependency>
 	    <groupId>org.mybatis</groupId>
 	    <artifactId>mybatis</artifactId>
