@@ -29,9 +29,9 @@ public class CustomerController {
 		    session.removeAttribute("loginInfo");	 
 		    System.out.println("로그인시도 : "+new Date()+" : "+id+" : "+pwd);
 		    String result = "";
-		    Customer c = dao.selectById(id);
-
-		    if( null != c  && pwd.equals(c.getPassword())){
+		    Customer c = dao.selectById(id);		    
+		    System.out.println(c.getStatus());
+		    if( null != c  && pwd.equals(c.getPassword()) && !c.getStatus().equals("d")){
 	    		session.setAttribute("loginInfo",c);
 				result = "1";
 		    }else result = "-1";   
@@ -94,5 +94,52 @@ public class CustomerController {
 		model.addAttribute("result",request.getContextPath());			
 		String forwardURL="/result.jsp";
 		return forwardURL;
+	}
+	
+	@RequestMapping("/customerdetail.do")
+	public String customerdetail(HttpServletRequest request,
+									HttpSession session, 
+									Model model){
+		Customer c = (Customer)session.getAttribute("loginInfo");
+		model.addAttribute("result",c);			
+		String forwardURL="/result_customer_detail.jsp";
+		return forwardURL;
+	}
+	
+	@RequestMapping("/customerdelete.do")
+	public String customerdelete(HttpServletRequest request, HttpSession session, 
+								String id,
+								@RequestParam("pwd") String pwd, 
+								String name, Model model){
+		 Customer c = null;
+		 try {
+			 	c = new Customer(id, pwd, name);
+				 System.out.println(c);
+				dao.delete(id);		
+			 
+			} catch (Exception e) {
+				e.getMessage();
+			}	  
+		 	session.removeAttribute("loginInfo");	//세션에서 loginInfo속성삭제
+		 	model.addAttribute("result",request.getContextPath());			
+			String forwardURL="/result.jsp";
+			return forwardURL;
+	}
+	
+	@RequestMapping("/customermodify.do")
+	public String customermodify(HttpSession session, String id,
+								@RequestParam("pwd") String pwd, 
+								String name, Model model){
+			Customer c = null;
+		 try {
+			 	c = new Customer(id, pwd, name);
+				dao.update(c);	
+				session.setAttribute("loginInfo",c);		 
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}	  
+		 	model.addAttribute("result",c);	
+		    String forwardURL="/result_customer_detail.jsp";
+			return forwardURL;
 	}
 }

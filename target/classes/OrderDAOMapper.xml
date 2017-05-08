@@ -53,8 +53,14 @@
 	</insert>
 	
 	<insert id="insertLine" parameterType="OrderLine">
+		<selectKey keyProperty="line_info_no"
+				resultType="int"
+				order="BEFORE">
+			SELECT NVL(MAX(info_no),0) 
+			FROM order_info
+		</selectKey>
 		INSERT INTO order_line (LINE_INFO_NO, LINE_PROD_NO, LINE_QUANTITY)
-		VALUES (order_info_seq.CURRVAL, #{line_p.no}, #{line_quantity})
+		VALUES (#{line_info_no}, #{line_p.no}, #{line_quantity})
 	</insert>
 
 </mapper>

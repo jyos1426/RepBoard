@@ -30,35 +30,27 @@ public class CustomerDAOOracle implements CustomerDAO {
 	
 	@Override
 	public List<Customer> selectAll() throws Exception {
-		List<Customer> list = null;
-		try{
-			list = session.selectList("CustomerDAOMapper.selectAll");				
-		}catch(Exception e){
-			throw e;
-		}
-		return list;
+		return session.selectList("CustomerDAOMapper.selectAll");			
 	}
 
 	@Override
 	public Customer selectById(String id) throws Exception {		
-		Customer c = null;
-		try{
-			c = session.selectOne("CustomerDAOMapper.selectById",id);				
-		}catch(Exception e){
-			throw e;
-		}
-		return c;
+		return session.selectOne("CustomerDAOMapper.selectById",id);			
 	}
 
 	@Override
-	public List<Customer> selectByName(String name) throws Exception {
-		List<Customer> list = null;
-		try{
-			list = session.selectList("CustomerDAOMapper.selectByName",name);				
-		}catch(Exception e){
-			throw e;
-		}
-		return list;
+	public List<Customer> selectByName(String name) throws Exception {		
+		return session.selectList("CustomerDAOMapper.selectByName",name);		
+	}
+
+	@Override
+	public int delete(String id) throws Exception {
+		return session.delete("CustomerDAOMapper.delete",id);		
+	}
+
+	@Override
+	public int update(Customer c) throws Exception {
+		return session.update("CustomerDAOMapper.update",c);		
 	}
 
 }

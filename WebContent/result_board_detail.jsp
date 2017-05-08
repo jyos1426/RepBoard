@@ -9,7 +9,6 @@
 <title>result_board_detail.jsp</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-
 $(function(){	
 	var $parentObj = $("article");
 	if($parentObj.length == 0){
@@ -43,8 +42,6 @@ $(function(){
 		return false;	
 		
 	});
-	
-	//아직 DOM트리에 구성되지 않았지만 동적으로 추가될 객체에 대한 이벤트 핸들러 작성가능	
 });
 
 </script>

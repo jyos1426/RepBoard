@@ -24,13 +24,11 @@ $(function(){
 			data: { "no":no, "name":name, "price":price, "quantity":quantity },
 			success:function(responsdData){			
 				$parentObj.empty();
-				//location.href="productlist.do";
 			},
 			error:function(xhr, status,error){
 				console.log(xhr.status);
 			}
 		});
-		//$parentObj.off();
 		return false;
 	});
 	
@@ -41,10 +39,10 @@ $(function(){
 				success: function(responseData){
 				
 				$parentObj.empty();
-				var result = responseData.trim();
-				var jsonObj= JSON.parse(result);
-				console.log(jsonObj.no+","+jsonObj.name+","+jsonObj.price);
-				
+				var jsonObj = responseData;
+				//var jsonObj= JSON.parse(result);
+				//console.log(jsonObj.no+","+jsonObj.name+","+jsonObj.price);
+								
 				var $data='';
 			
 				var $detail_no = jsonObj.no;
@@ -92,7 +90,7 @@ $(function(){
                 data+='</style>';
                 data+='<table class="detail">';
                 data+='<tr>';
-                data+='<th>상품번호</th>';
+                data+='<th>상품번호</tth>';
                 data+='<td id="no">' +jsonObj.no + '</td>';
                 data+='</tr>';
                 data+='<tr>';

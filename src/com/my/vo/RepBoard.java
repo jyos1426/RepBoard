@@ -28,20 +28,20 @@ public class RepBoard {
 		this.subject = subject;
 		this.content = content;
 		this.password = password;
-	}// �� �˻� - ��ȯ�� ��
+	}
 	public RepBoard(int parent_no, String subject, String content, String password) {
 		super();
 		this.parent_no = parent_no;
 		this.subject = subject;
 		this.content = content;
 		this.password = password;
-	}// ��� ����
+	}
 	public RepBoard(String subject, String content, String password) {
 		super();
 		this.subject = subject;
 		this.content = content;
 		this.password = password;
-	}// �۾���
+	}
 	
 	public int getLevel() {
 		return level;

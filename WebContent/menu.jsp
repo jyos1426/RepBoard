@@ -13,6 +13,7 @@
 			$.ajax({
 				url : url,
 				async : false,
+				method: "post",
 				success : function(responseData) {
 					if (url == 'logout.do') {
 						location.href = responseData.trim();
@@ -49,8 +50,15 @@
 		<%
 			}
 		%>
-		<li><a style="pointer-events: none;" id="noclick_list" href="#">목록</a>
+		<li><a style="pointer-events: none;" id="noclick_list" href="#">My</a>
 			<ul>
+			<%
+			if (session.getAttribute("loginInfo") != null) {
+			%>
+				<li><a href="customerdetail.do">내 정보</a></li>
+				<%
+				}
+			%>
 				<li><a href="cartlist.do">장바구니</a></li>
 				<li><a href="orderlist.do">주문목록</a></li>
 			</ul></li>

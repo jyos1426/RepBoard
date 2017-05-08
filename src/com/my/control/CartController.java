@@ -1,29 +1,23 @@
 package com.my.control;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.my.vo.Product;
 
-public class AddCartHandler implements Handler {
-
-	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-		HttpSession session = request.getSession();
-		   String no = request.getParameter("no");
-		   String name = request.getParameter("name");
-		   int price = Integer.parseInt(request.getParameter("price"));
-		   int quantity = Integer.parseInt(request.getParameter("quantity"));   
-		   System.out.println(no+name+price);
+@Controller
+public class CartController {
+	
+	@RequestMapping("/addcart.do")
+	public String add(HttpSession session,String no,String name,
+			@RequestParam("price") int price,int quantity){
 		   
-		   Product p = new Product(no,name,price);
+		   Product p = new Product(no,name,price);	
 		   HashMap<Product,Integer> cart = (HashMap)session.getAttribute("cart");
 		   if(null == cart){
 			   cart = new HashMap<Product,Integer>();
@@ -43,9 +37,13 @@ public class AddCartHandler implements Handler {
 		   for(Product inCartProduct: products){
 			   int q = cart.get(inCartProduct);
 			   System.out.println(inCartProduct.getNo()+" : "+inCartProduct.getName() +" : "+ q);
-		   }
-		   
-		return null;
+		   }		   
+		return "result_productlist.jsp";
 	}
-
+	
+	@RequestMapping("/cartlist.do")
+	public String execute(){
+		String forwardURL="result_cartlist.jsp";
+		return forwardURL;
+	}
 }

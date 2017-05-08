@@ -43,7 +43,7 @@ public class Product {
 	
 	@Override
 	public String toString() {
-		return "Product [no=" + no + ", name=" + name + ", price=" + price + "]";
+		return "no="+no+"&name="+name+"&price="+price;
 	}
 	
 	@Override

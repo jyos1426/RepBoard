@@ -1,15 +1,8 @@
 package com.my.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.SQLException;
 import java.util.List;
 
-import org.apache.ibatis.exceptions.PersistenceException;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.BadSqlGrammarException;
@@ -21,11 +14,9 @@ import com.my.vo.Product;
 public class ProductDAOOracle implements ProductDAO {
 	@Autowired
 	private SqlSession session;
-
 	
 	@Override
 	public void insert(Product p) throws Exception {
-		SqlSession session = null;
 		try{						
 			session.insert("ProductDAOMapper.insert",p);
 		}catch(DuplicateKeyException e){

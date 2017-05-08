@@ -4,22 +4,24 @@ package com.my.vo;
 public class Customer extends Person{
 	private String id;
 	private transient String password; 
-	//ransient 직렬화 대상에서 제외
-//	private String name;
+	private String status;
 	
 	
 	//Ctrl + shift + S
 	public Customer() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Customer(String id, String password, String name) {
 		this.id = id;
 		this.password = password;
-//		this.name = name;	//부모로부터 상속은 받았으나 private라 접근이 불가한 것
 		this.setName(name);
 	}
-	
+	public Customer(String id, String password, String name, String status) {
+		this.id = id;
+		this.password = password;
+		this.setName(name);
+		this.status = status;
+	}
 	public String getId() {
 		return id;
 	}
@@ -32,11 +34,18 @@ public class Customer extends Person{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getStatus() {
+		if (null==status)
+			status = "pass";
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return id + "," + password + "," + this.getName();
+		return "id="+id+"&password="+password+"&name="+this.getName();
 	}
 	
 

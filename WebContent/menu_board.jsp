@@ -101,14 +101,12 @@ $(function(){
 			success:function(responseData){
 				if(responseData =="1"){
 					if($flag=="modify"){
-						var url = "boardget.do";
-						
+						var url = "boardget.do";			
 						$.ajax({
 							url: url,
 							method:"post",
 							data: {"no":"<%=request.getParameter("no")%>"},
-							success:function(responseData){
-								
+							success:function(responseData){								
 								var result = responseData.trim();
 								var jsonObj= JSON.parse(result);
 								var url = "form_boardwrite.jsp";		
@@ -138,8 +136,6 @@ $(function(){
 							method:"post",
 							data: {"no":<%=request.getParameter("no")%>},
 							success:function(responseData){		
-								/* $parentObj.empty();
-								$parentObj.html(responseData); */
 								if(responseData=="-1"){
 									alert("답글이 있어 글이 삭제될 수 없습니다.");
 								}
@@ -161,26 +157,6 @@ $(function(){
 		});	
 		return false;
 	});	
-	
-<%-- 	checkpass = function(){
-		var url = "checkpassword.do";
-		var imsi = 0;
-		$.ajax({
-			url: url,
-			method:"post",
-			data: {"pwd":$("input[name=pwd]").val(),
-				"no":"<%=request.getParameter("no")%>"
-				},
-			success:function(responseData){
-				if(responseData =="1"){
-					imsi = 1;			
-				}else if(responseData =="-1"){
-					alert("비밀번호가 일치하지 않음");
-					imsi = -1;
-				}
-			}
-		});	
-	}; --%>	
 });
 </script>
 <style>

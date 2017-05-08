@@ -28,6 +28,8 @@ public interface CustomerDAO{
 	 * @return
 	 */
 	public List<Customer> selectByName(String name) throws Exception;
+	public int delete(String id) throws Exception;
+	public int update(Customer c) throws Exception;
 }
 
 

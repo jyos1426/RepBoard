@@ -42,7 +42,6 @@ $(function(){
 		        	//query string 만들기 귀찮으니까 data property 사용가능
 					success: function(responseData){						
 							if(responseData=="1"){
-								alert("로그인 성공");
 								location.href= "<%=request.getContextPath()%>"; //'/web12';	//index.jsp
 							}
 							else if(responseData =="-1")

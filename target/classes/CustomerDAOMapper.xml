@@ -16,4 +16,10 @@
 	<select id="selectByName" parameterType="string" resultType="Customer">
 		SELECT * FROM customer WHERE name=#{name} ORDER BY id DESC
 	</select>
+	<update id="delete" parameterType="string">
+		UPDATE customer SET status='d' WHERE id=#{id}
+	</update>
+	<update id="update" parameterType="Customer" >
+		UPDATE customer SET name=#{name}, password=#{password} WHERE id=#{id}
+	</update>
 </mapper>

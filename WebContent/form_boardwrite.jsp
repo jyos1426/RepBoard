@@ -5,7 +5,6 @@
 <title>form_boardwrite.jsp</title>
 
 <style>
-	
   .write_div{width:510px; margin:auto;position:relative;} 
   .write_tb {width:510px; border-collapse: collapse; margin-top:20px }
   .write_tb td{ border-bottom:1px solid lightgray; } 
